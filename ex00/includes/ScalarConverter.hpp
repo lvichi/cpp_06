@@ -16,6 +16,7 @@
 #include <iostream>
 #include <climits>    // INT_MIN INT_MAX
 #include <cstdlib>    // std::strtod
+#include <iomanip>    // std::fixed
 
 
 class ScalarConverter

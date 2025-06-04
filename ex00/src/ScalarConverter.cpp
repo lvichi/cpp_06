@@ -27,8 +27,6 @@ void ScalarConverter::convert( const std::string& literal )
 {
   std::string literal_clean = sanitizeLiteral( literal );
 
-  // std::cout << '"' << literal_clean << '"' << std::endl;
-
   char* end  = 0;
   double number = stringToDouble( literal_clean, end);
 
@@ -113,24 +111,23 @@ void printInt( double number )
 
 void printFloat( double number )
 {
-  bool isScientific = number < 0.0001 || number > 1000000;
-
-  if (isScientific || number != static_cast<int>( number ))
-    std::cout << "float: " << static_cast<float>( number ) << "f" << std::endl;
+  if ( static_cast<long long>( number ) == number )
+    std::cout << "float: " << std::fixed << std::setprecision(1)
+              << static_cast<float>( number ) << "f" << std::endl;
   else
     std::cout << "float: "
-              << static_cast<float>( number ) << ".0f" << std::endl;
+            << static_cast<float>( number ) << "f" << std::endl;
 }
 
 
 void printDouble( double number )
 {
-  bool isScientific = number < 0.0001 || number > 1000000;
-
-  if ( isScientific || number != static_cast<int>( number ) )
-    std::cout << "double: " << number << std::endl;
+  if ( static_cast<long long>( number ) == number )
+    std::cout << "double: " << std::fixed << std::setprecision(1)
+              << number << std::endl;
   else
-    std::cout << "double: " << number << ".0" << std::endl;
+    std::cout << "double: "
+              << number << std::endl;
 }
 
 
