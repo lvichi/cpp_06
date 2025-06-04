@@ -62,7 +62,8 @@ std::string sanitizeLiteral( const std::string& literal )
 
   if ( literal_clean[( literal_clean.length() - 1)] == 'f' ) {
 	char* end  = 0;
-    std::string literal_test = literal_clean.substr(0, literal_clean.length() - 1);
+    std::string literal_test;
+	literal_test = literal_clean.substr(0, literal_clean.length() - 1);
     (void)std::strtod( literal_test.c_str(), &end );
 	if ( *end == 0 )
 		literal_clean = literal_clean.substr(0, literal_clean.length() - 1);
@@ -116,7 +117,8 @@ void printFloat( double number )
   if (isScientific || number != static_cast<int>( number ))
     std::cout << "float: " << static_cast<float>( number ) << "f" << std::endl;
   else
-    std::cout << "float: " << static_cast<float>( number ) << ".0f" << std::endl;
+    std::cout << "float: "
+              << static_cast<float>( number ) << ".0f" << std::endl;
 }
 
 
@@ -133,8 +135,8 @@ void printDouble( double number )
 
 void printNan()
 {
-  std::cout << "char: Impossible" << std::endl;
-  std::cout << "int: Impossible" << std::endl;
+  std::cout << "char: impossible" << std::endl;
+  std::cout << "int: impossible" << std::endl;
   std::cout << "float: nanf" << std::endl;
   std::cout << "double: nan" << std::endl;
 }
